@@ -10,6 +10,7 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -60,14 +61,16 @@ public class MyReader implements ItemReader<List<Person>> {
         Statement st = connection.createStatement();
         ResultSet rs = st.executeQuery(this.sql);
 
+        List<Person> personList = new ArrayList<>();
+
         while (rs.next()) {
-            System.out.print("Column 1 returned ");
-            System.out.println(rs.getString(1));
+            personList.add(new Person(rs.getInt(1), rs.getString(2)));
+
         }
 
         rs.close();
         st.close();
 
-        return null;
+        return personList;
     }
 }

@@ -11,11 +11,13 @@ import java.util.List;
  * daak1365@yahoo.com
  * 09125188694
  */
-public class MyWriter implements ItemWriter<Person> {
+public class MyWriter implements ItemWriter<List<Person>> {
     @Override
-    public void write(List<? extends Person> list) throws Exception {
-        for (Person person: list) {
-            System.out.println(person.getName());
+    public void write(List<? extends List<Person>> list) throws Exception {
+        for (List<Person> personList : list) {
+            for (Person person : personList) {
+                System.out.println(person.getName());
+            }
         }
     }
 }
