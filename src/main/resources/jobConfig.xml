@@ -55,6 +55,8 @@
         <property name = "sql" value = "SELECT * FROM tb_person" />
     </bean>
 
+    <bean id = "myProcessor" class = "ir.david.MyProcessor"></bean>
+
     <bean id = "myItemWriter" class = "ir.david.MyWriter" scope = "step">
         <!--        <property name = "dataSource" ref = "postgresqlDataSource" />-->
         <!--        <property name = "sql" value = "SELECT * FROM tb_person" />-->

@@ -24,6 +24,7 @@
         <batch:step id = "step-one">
             <batch:tasklet>
                 <batch:chunk reader = "myItemReader"
+                             processor="myProcessor"
                              writer = "myItemWriter"
                              commit-interval = "5">
                 </batch:chunk>

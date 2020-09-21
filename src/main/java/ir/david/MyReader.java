@@ -65,7 +65,6 @@ public class MyReader implements ItemReader<List<Person>> {
 
         while (rs.next()) {
             personList.add(new Person(rs.getInt(1), rs.getString(2)));
-
         }
 
         rs.close();
