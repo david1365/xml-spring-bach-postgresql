@@ -10,8 +10,8 @@
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.postgresql.Driver" />
         <property name="url" value="jdbc:postgresql://localhost:5432/spring_bach" />
-        <property name="username" value="david" />
-        <property name="password" value="david" />
+        <property name="username" value="postgres" />
+        <property name="password" value="postgres" />
         <!--<property name="socketTimeout" value="10"/>-->
 
         <property name="connectionProperties">
@@ -22,34 +22,42 @@
     </bean>
 
     <!-- create job-meta tables automatically -->
-    <jdbc:initialize-database data-source="postgresqlDataSource">
+    <!--<jdbc:initialize-database data-source="postgresqlDataSource">
         <jdbc:script
                 location="org/springframework/batch/core/schema-drop-postgresql.sql" />
         <jdbc:script location="org/springframework/batch/core/schema-postgresql.sql" />
-    </jdbc:initialize-database>
+    </jdbc:initialize-database>-->
 
     <!-- stored job-meta in memory -->
-    <!--
     <bean id="jobRepository"
       class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean">
         <property name="transactionManager" ref="transactionManager" />
     </bean>
-    -->
 
     <!-- stored job-meta in database -->
-    <bean id="jobRepository"
+    <!--<bean id="jobRepository"
           class="org.springframework.batch.core.repository.support.JobRepositoryFactoryBean">
         <property name="dataSource" ref="postgresqlDataSource" />
         <property name="transactionManager" ref="transactionManager" />
         <property name="databaseType" value="sqlite" />
     </bean>
-
+-->
     <bean id="transactionManager" class=
             "org.springframework.batch.support.transaction.ResourcelessTransactionManager" />
 
     <bean id="jobLauncher"
           class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
         <property name="jobRepository" ref="jobRepository" />
+    </bean>
+
+    <bean id = "myItemReader" class = "ir.david.MyReader" scope = "step">
+        <property name = "dataSource" ref = "postgresqlDataSource" />
+        <property name = "sql" value = "SELECT * FROM tb_person" />
+    </bean>
+
+    <bean id = "myItemWriter" class = "ir.david.MyWriter" scope = "step">
+        <!--        <property name = "dataSource" ref = "postgresqlDataSource" />-->
+        <!--        <property name = "sql" value = "SELECT * FROM tb_person" />-->
     </bean>
 
 </beans>

@@ -5,11 +5,29 @@
 
     <!-- Defining a bean -->
     <bean id="tasklet" class="ir.david.MyTasklet"/>
+
+    <bean id="tasklet2" class="ir.david.MyTasklet2"/>
+
     <!-- Defining a job-->
     <batch:job id="helloWorldJob">
         <!-- Defining a Step -->
-        <batch:step id="step1">
+        <batch:step id="step1" next="step2">
             <tasklet ref="tasklet"/>
+        </batch:step>
+
+        <batch:step id="step2">
+            <tasklet ref="tasklet2"/>
+        </batch:step>
+    </batch:job>
+
+    <batch:job id = "reader-writer">
+        <batch:step id = "step-one">
+            <batch:tasklet>
+                <batch:chunk reader = "myItemReader"
+                             writer = "myItemWriter"
+                             commit-interval = "5">
+                </batch:chunk>
+            </batch:tasklet>
         </batch:step>
     </batch:job>
 

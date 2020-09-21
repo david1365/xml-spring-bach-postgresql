@@ -11,11 +11,11 @@ import org.springframework.batch.repeat.RepeatStatus;
  * daak1365@yahoo.com
  * 09125188694
  */
-public class MyTasklet implements Tasklet {
+public class MyTasklet2 implements Tasklet {
 
     @Override
     public RepeatStatus execute(StepContribution arg0, ChunkContext arg1) throws Exception {
-        System.out.println("Hello This is a sample example of spring batch ---->>> 1");
+        System.out.println("Hello This is a sample example of spring batch ---->> 2");
         return RepeatStatus.FINISHED;
     }
 }

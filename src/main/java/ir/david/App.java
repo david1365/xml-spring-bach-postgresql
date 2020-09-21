@@ -32,7 +32,8 @@ public class App {
         JobLauncher jobLauncher = (JobLauncher) context.getBean("jobLauncher");
 
         // Creating the job
-        Job job = (Job) context.getBean("helloWorldJob");
+//        Job job = (Job) context.getBean("helloWorldJob");
+        Job job = (Job) context.getBean("reader-writer");
 
         // Executing the JOB
         JobExecution execution = jobLauncher.run(job, new JobParameters());
