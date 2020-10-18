@@ -15,7 +15,7 @@ public class MyTasklet2 implements Tasklet {
 
     @Override
     public RepeatStatus execute(StepContribution arg0, ChunkContext arg1) throws Exception {
-        System.out.println("Hello This is a sample example of spring batch ---->> 2");
+        System.out.println("Hello This is a sample example of spring batch ---->> 2 <<---------");
         return RepeatStatus.FINISHED;
     }
 }

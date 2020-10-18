@@ -11,8 +11,14 @@
     <!-- Defining a job-->
     <batch:job id="helloWorldJob">
         <!-- Defining a Step -->
-        <batch:step id="step1" next="step2">
-            <tasklet ref="tasklet"/>
+
+        <batch:step id="step1">
+<!--                    next="step2" >-->
+            <batch:tasklet ref="tasklet"/>
+            <batch:next on="*" to="step2"/>
+<!--            <next on="*" to="step2"/>-->
+<!--           <batch:end on="*"/>-->
+<!--            <tasklet ref="tasklet"/>-->
         </batch:step>
 
         <batch:step id="step2">
